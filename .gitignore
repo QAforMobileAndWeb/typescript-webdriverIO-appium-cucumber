@@ -1,0 +1,29 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# temporary folders
+/allure-report/*
+/compiled-output/*
+/temp/*
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/study-project-appium.iml
+/.idea/workspace.xml
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# System Files
+.DS_Store
+Thumbs.db
+/package-lock.json
+/debug.log
