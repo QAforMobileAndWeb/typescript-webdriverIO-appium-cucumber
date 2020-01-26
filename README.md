@@ -86,3 +86,26 @@ capabilities: [
 }
 ],
 ```
+
+### Run tests within Dockerized emulators
+
+Preconditions:
+1. Docker installed
+2. Docker image could be local or from Docker HUB
+
+Android:
+|      :---:         |             :---:               |         :---:                       |
+| --device           | docker image                    | description                         |
+| ------------------ | ------------------------------- | ----------------------------------- |
+| android-10-api-29  | budtmo/docker-android-x86-10.0  | the latest (2019) Android OS        |
+| android-8.1-api-27 | budtmo/docker-android-x86-10.0  | popular (2017) Android OS - 15,4%** |
+
+*** - https://developer.android.com/about/dashboards/index.html?utm_source=suzunone
+
+for running use: 
+```
+npm run test-docker --device=${} (default: android-10-api-29)
+
+```
+
+

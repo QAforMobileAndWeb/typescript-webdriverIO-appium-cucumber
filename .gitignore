@@ -3,6 +3,7 @@
 # temporary folders
 /allure-report/*
 /compiled-output/*
+/dockerLogs/*
 /temp/*
 
 # dependencies
@@ -26,4 +27,7 @@
 .DS_Store
 Thumbs.db
 /package-lock.json
+/android_10_app.cid
 /debug.log
+/npm-debug.log
+
