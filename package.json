@@ -9,8 +9,10 @@
     "run-test": "./node_modules/.bin/wdio run ./config/wdio.conf.js",
     "run-test-docker": "./node_modules/.bin/wdio run ./config/wdio.docker.conf.js",
     "test": "npm run clean && npm run tsc-test && npm run run-test",
-    "test-docker": "npm run clean && npm run tsc-test && npm run run-test-docker",    
-    "report": "./node_modules/.bin/allure generate --clean ./temp/allure-results && ./node_modules/.bin/allure open ./allure-report/"
+    "test-docker": "npm run clean && npm run tsc-test && npm run run-test-docker",
+    "generate-report": "./node_modules/.bin/allure generate --clean temp/allure-results",
+    "win-launch-report": "./node_modules/.bin/allure open",
+    "ubuntu-launch-report": "./node_modules/.bin/http-server ./allure-report"
   },
   "devDependencies": {
     "@types/chai": "^4.2.7",
@@ -29,6 +31,7 @@
     "chromedriver": "^79.0.0",
     "cucumber": "^4.2.1",
     "deepmerge": "^4.2.2",
+    "http-server": "^0.12.1",
     "logger": "0.0.1",
     "rimraf": "^2.6.2",
     "ts-node": "^6.1.1",

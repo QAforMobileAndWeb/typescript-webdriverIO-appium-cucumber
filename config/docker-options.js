@@ -9,7 +9,7 @@ const healthCheck = {
 
     inspectInterval: 1000,
 
-    startDelay: 180000
+    startDelay: 240000
 };
 
 
@@ -20,6 +20,7 @@ const healthCheck = {
  * --privileged (Only for ubuntu OS. This flag allow to use system image x86 for better performance)
  * -d -p 6080:6080 -p 5554:5554 -p 5555:5555 
  * -e DEVICE="Samsung Galaxy S10" (Device name. Default device is Nexus 5)
+ * -e EMULATOR_ARGS="-gpu host" (see: https://gist.github.com/JonathanLalou/180c87554d8278b0e6d7)
  * --name android-container budtmo/docker-android-x86-10.0
  */ 
 function getDockerOptions(platformVersion, deviceName) {
@@ -37,7 +38,10 @@ function getDockerOptions(platformVersion, deviceName) {
             privileged: true,
             d: true,
             // Samsung Galaxy S10 / Samsung Galaxy S8
-            e: [ `DEVICE=${deviceName}` ],
+            e: [ 
+                `DEVICE=${deviceName}`,
+                'EMULATOR_ARGS=-gpu host'
+             ],
             p: [
                 '6080:6080',
                 '5554:5554',
