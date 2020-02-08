@@ -1,7 +1,8 @@
 const configHelper = require('./config-helper.js');
 
 /**
- * more information: https://webdriver.io/docs/options.html
+ * more information: https://webdriver.io/docs/configurationfile.html
+ *                   https://webdriver.io/docs/options.html
  */
 exports.config = {
 
@@ -27,7 +28,6 @@ exports.config = {
         // https://webdriver.io/docs/appium-service.html
         'appium'        
     ],
-
 
     // http://appium.io/docs/en/writing-running-appium/server-args/index.html
     appium: {
@@ -57,24 +57,7 @@ exports.config = {
 
     framework: 'cucumber',
 
-    cucumberOpts: {
-        require: [
-            './compiled-output/test-layer/step_definitions/common_steps.js'
-        ],
-        backtrace: true,
-        requireModule: [],
-        dryRun: process.env.npm_config_dryRun ? !!process.env.npm_config_dryRun : false,
-        failFast: false,
-        format: ['pretty'],
-        colors: true,
-        snippets: true,
-        source: true,
-        profile: [],
-        strict: true,
-        tagExpression: configHelper.getTagWithExcluding(),
-        timeout: 180000,
-        ignoreUndefinedDefinitions: false,
-    },
+    cucumberOpts: configHelper.getCucumberOptions(),
 
     // more info: https://webdriver.io/docs/allure-reporter.html#configuration
     reporters: [ 
@@ -95,16 +78,25 @@ exports.config = {
     
     // Runs after a Cucumber step
     afterStep: function (uri, feature, { error, result, duration, passed }, stepData, context) {
-        
-        console.log(passed);
 
-        const stepResult = !!passed ? 'passed' : 'failed';
+        const stepResult = !!passed && !error ? 'passed' : 'failed';
 
-        configHelper.logger.info(`STEP :: ${stepData.step.text} :: ${stepResult}`);
+        configHelper.logger.info(`AFTER STEP :: ${stepData.step.text} :: ${stepResult}`);
 
         browser.takeScreenshot();
-    },   
+    },
 
+    // Runs after a Cucumber scenario
+    afterScenario: async function (uri, feature, scenario, result, sourceLocation) {
+
+      // TODO
+      //  await browser.hideDeviceKeyboard('pressKey', 'Done');
+      //  configHelper.logger.info(`AFTER SCENARIO :: keyboard hidden`);
+
+        await browser.closeApp();
+        configHelper.logger.info(`AFTER SCENARIO :: app closed`);
+
+    },
 
     
     // WebdriverIO provides several hooks you can use to interfere with the test process in order to enhance
@@ -117,7 +109,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      */
      onPrepare: function (config, capabilities) {
-        configHelper.logger.info('onPrepare hook');
+        configHelper.logger.info('ON_PREPARE :: ');
      },
     /**
      * Gets executed just before initialising the webdriver session and test framework. It allows you
@@ -127,7 +119,7 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
      beforeSession: function (config, capabilities, specs) {
-        configHelper.logger.info('beforeSession hook');    
+        configHelper.logger.info('BEFORE_SESSION :: ');
      },
 
     // Gets executed before test execution begins. At this point you can access all global
@@ -169,18 +161,11 @@ exports.config = {
      */
     // beforeStep: function (uri, feature, stepData, context) {
     // },
-
-    /**
-     * Runs after a Cucumber scenario
-     */
-    // afterScenario: function (uri, feature, scenario, result, sourceLocation) {
-    // },
     /**
      * Runs after a Cucumber feature
      */
     // afterFeature: function (uri, feature, scenarios) {
     // },
-
     /**
      * Runs after a WebdriverIO command gets executed
      * @param {String} commandName hook command name

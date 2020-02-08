@@ -8,6 +8,12 @@ const baseView = new BaseView();
 
 defineSupportCode(({ Given, When, Then }) => {
 
+    /*
+    When(/I launch '(.+)'/, async (activityName) => {
+        await utils.launch(activityName);
+    });
+    */
+
     When(/I launch application and skip dialog panels/, async () => {
         const dialogPanel = baseView.getContainer('dialog panel');
         const isLocationAlertVisible = await dialogPanel.isElementVisible('location alert');

@@ -1,7 +1,7 @@
 /**
  * more information: http://appium.io/docs/en/writing-running-appium/caps/
  */
-function getCapabilities(platformName, platformVersion) {
+function getCapabilities(platformName, platformVersion, adbDeviceName) {
 
   return {
 
@@ -11,7 +11,7 @@ function getCapabilities(platformName, platformVersion) {
     browserName: '',      
     
     // device name: adb devices
-    'appium:deviceName': 'emulator-5554', //'8a48ad27', // 'emulator-5554',
+    'appium:deviceName': adbDeviceName,
   
     // how long (in seconds) Appium will wait for a new command from the client
     'appium:newCommandTimeout': 60000,
@@ -19,7 +19,7 @@ function getCapabilities(platformName, platformVersion) {
     'platformName': `${platformName}`,
 
     // android platform version of the device
-    'appium:platformVersion': `${platformVersion}`, // '6.0.1' ,//`${platformVersion}`,
+    'appium:platformVersion': `${platformVersion}`,
 
     'appium:noSign': true,
 

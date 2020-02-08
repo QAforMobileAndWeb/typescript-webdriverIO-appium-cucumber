@@ -4,8 +4,7 @@ Feature: Launch application
   I can overview and manage main view of application
   So all functionality should work as expected
 
-  # for only-api-29
-  @launch-app-overview
+  @launch-app-overview @only-api-29
   Scenario: Launch application overview
     Then the 'location alert' should be visible within dialog panel
     And elements are visible on current container:

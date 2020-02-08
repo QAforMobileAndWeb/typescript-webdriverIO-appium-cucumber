@@ -1,7 +1,7 @@
-const { getCapabilities } = require('./capabilities.js');
-const { getDockerOptions } = require('./docker-options.js');
-// const cp = require('child-process-es6-promise');
-const logger = require('logger');
+const { getCapabilities }    = require('./capabilities.js');
+const { getCucumberOptions } = require('./cucumber-options.js');
+const { getDockerOptions }   = require('./docker-options.js');
+const logger                 = require('logger');
 
 const log = logger.createLogger();
 log.format = ((level, date, message) => `CUSTOM LOGGER :: ${message}`);
@@ -16,6 +16,8 @@ const configHelper = {
 
     device: process.env.npm_config_device ? process.env.npm_config_device : 'Samsung Galaxy S10',
 
+    adbDeviceName: process.env.npm_config_adbDeviceName ? process.env.npm_config_adbDeviceName : 'emulator-5554',
+
     logger: log,
 
 
@@ -29,11 +31,24 @@ const configHelper = {
 
             const [pltfmName, pltfmVersion] = platform.split('-');
 
-            requiredCapabilities.push(getCapabilities(pltfmName, pltfmVersion));
+            requiredCapabilities.push(getCapabilities(pltfmName, pltfmVersion, this.adbDeviceName));
 
         });           
 
         return requiredCapabilities;
+
+    },
+
+    getCucumberOptions() {
+
+        const expression = this.getTagWithExcluding();
+
+        return Object.assign(
+            {
+                tagExpression: expression
+            },
+            getCucumberOptions()
+        );
 
     },
 
@@ -48,25 +63,23 @@ const configHelper = {
 
     },
 
-
-
+    /**
+     *
+     * more info: https://cucumber.io/docs/cucumber/api/#tag-expressions
+     */
     getTagWithExcluding() {
-        let tagExpression = `${process.env.npm_config_tag}`;
 
-        /*if (!process.env.npm_config_device.includes('api-29')) {
-            tagExpression = `${tagExpression} not @only-api-29`;
-        }*/
+        let testsToRun = String(process.env.npm_config_tags).replace(/,/g, ' or ');
 
-        return tagExpression;
-    },
+        if (!this.fullPlatform.includes('api-29')) {
+            testsToRun = `(${testsToRun}) and (not @only-api-29)`;
+        }
 
-    /*
-    installAppBeforeAppiumSession() {
-        cp.exec('adb install ./docker/ru.yandex.weatherplugin_6.5.12_9341.apk')
-            .then((result) => console.log(result))
-            .catch((error) => console.log(error));
+        this.logger.info(`tests to be run :: ${testsToRun}`);
+
+        return testsToRun;
     }
-    */
+
 };
 
 module.exports = configHelper;

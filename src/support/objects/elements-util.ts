@@ -1,4 +1,5 @@
 const configHelper = require('./../../../config/config-helper.js');
+import { Activities } from '../../support/enums/app-activities';
 
 class ElementsUtils {
 
@@ -53,14 +54,14 @@ class ElementsUtils {
     }
 
     public async fillElement(element, valueToFill) {
-        await this.clearElementValue(element);
+       // await this.clearElementValue(element);
 
         await element.setValue(valueToFill);
-        const result = await element.getValue();
+      // const result = await element.getValue();
 
-        if (result !== valueToFill) {
-            configHelper.logger.error(`setValue :: ${element.selector} :: cannot set value`);
-        }
+      //  if (result !== valueToFill) {
+      //      configHelper.logger.error(`setValue :: ${element.selector} :: cannot set value`);
+      //  }
     }
 
     public async clickOnElement(element) {
@@ -71,5 +72,15 @@ class ElementsUtils {
             configHelper.logger.error(`click on :: ${element.selector} :: error ${error.message}`);
         }
     }
+
+    /*
+    public async launch(activityName) {
+        const appPackage = 'ru.yandex.weatherplugin';
+        await browser.startActivity(appPackage, Activities[activityName]);
+
+        configHelper.logger.info(`launch activity :: ${Activities[activityName]}`);
+    }
+    */
+
 }
 export const utils = new ElementsUtils();
