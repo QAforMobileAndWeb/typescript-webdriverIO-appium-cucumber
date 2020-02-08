@@ -16,36 +16,41 @@ const healthCheck = {
 /**
  * more information: https://github.com/budtmo/docker-android
  * docker run command:
- * sudo docker run 
- * --privileged (Only for ubuntu OS. This flag allow to use system image x86 for better performance)
- * -d -p 6080:6080 -p 5554:5554 -p 5555:5555 
- * -e DEVICE="Samsung Galaxy S10" (Device name. Default device is Nexus 5)
- * -e EMULATOR_ARGS="-gpu host" (see: https://gist.github.com/JonathanLalou/180c87554d8278b0e6d7)
- * --name android-container budtmo/docker-android-x86-10.0
+ *   sudo docker run
+ *      --privileged  (Only for ubuntu OS. This flag allow to use system image x86 for better performance)
+ *      -d
+ *      -p 6080:6080
+ *      -p 5554:5554
+ *      -p 5555:5555
+ *      -p 4723:4723
+ *      -e DEVICE="Samsung Galaxy S10"
+ *      -e EMULATOR_ARGS="-gpu host" (see: https://gist.github.com/JonathanLalou/180c87554d8278b0e6d7)
+ *      -e APPIUM=true (see: https://github.com/budtmo/docker-android/blob/master/README_APPIUM_AND_SELENIUM.md)
+ *      appium-android-10.0 | appium-android-8.1 (Docker images)
  */ 
 function getDockerOptions(platformVersion, deviceName) {
 
     return {
-
-        // budtmo/docker-android-x86-10.0 / budtmo/docker-android-x86-8.1
-        // image: `budtmo/docker-android-x86-${platformVersion}`,
-        image: 'android-10-app',
+        // docker images: appium-android-10.0 | appium-android-8.1
+        image: `appium-android-${platformVersion}`,
 
         healthCheck: healthCheck,
 
-        options: {            
+        options: {
+            // stop container after build run
             rm: true,
             privileged: true,
             d: true,
-            // Samsung Galaxy S10 / Samsung Galaxy S8
-            e: [ 
+            e: [
                 `DEVICE=${deviceName}`,
-                'EMULATOR_ARGS=-gpu host'
+                'EMULATOR_ARGS=-gpu host',
+                'APPIUM=true'
              ],
             p: [
                 '6080:6080',
                 '5554:5554',
-                '5555:5555'
+                '5555:5555',
+                '4723:4723'
             ]            
         }
     };

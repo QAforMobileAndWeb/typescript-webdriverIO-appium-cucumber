@@ -1,8 +1,7 @@
+
+## typescript webdriverIO appium cucumber
 ---
 
-### typescript webdriverIO appium cucumber
-
-## Getting Started
 
 ### Requirements
 
@@ -29,14 +28,14 @@ npm run start-appium
 
 * execute the config files. This project has 2 config files:
 
-[wdio.config.js](./config/wdio.config.js) - used for running tests, with already running Appium server
+[wdio.config.js](config/wdio.conf.js) - used for running tests, with already running Appium server
 and emulator
 
 ```
 npm run test --tags=
 ```
 
-[wdio.docker.config.js](./config/wdio.docker.config.js) - starts docker container with Appium server and emuator
+[wdio.docker.config.js](config/wdio.docker.conf.js) - starts docker container with Appium server and emuator
 
 ```
 npm run test-docker --tags=
@@ -116,19 +115,7 @@ npm run test-docker --tags=@main-view --device='Samsung Galaxy S9'
 
 ### List of Devices
 
-| Type   | Device Name        |
-| ------ | ------------------ |
-| Phone  | Samsung Galaxy S10 |
-| Phone  | Samsung Galaxy S9  |
-| Phone  | Samsung Galaxy S8  |
-| Phone  | Samsung Galaxy S7  |
-| Phone  | Samsung Galaxy S6  |
-| Phone  | Nexus 4            |
-| Phone  | Nexus 5            |
-| Phone  | Nexus One          |
-| Phone  | Nexus S            |
-| Tablet | Nexus 7            |
-
+see https://github.com/budtmo/docker-android#list-of-devices
 
 ### Running tests within Dockerized Appium and emulator
 
