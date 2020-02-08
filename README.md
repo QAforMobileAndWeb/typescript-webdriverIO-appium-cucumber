@@ -8,9 +8,9 @@
 
 1. NodeJS installed globally in the system.
 
-2. JAVA(jdk) installed in the system, **JAVA_HOME** environment variable.
+2. JAVA installed in the system, **JAVA_HOME** environment variable.
 
-3. Andriod(sdk) installed in the system, **ANDROID_HOME** environment variable.
+3. Android (sdk) installed in the system, **ANDROID_HOME** environment variable.
 
 
 ### Setup
@@ -42,23 +42,28 @@ npm run test --tags=
 npm run test-docker --tags=
 ```
 
-options:
+### Options:
+```
+--tags= @main-view,@favorites,@launch-app (@launch-app-overview | @favorites | @launch-app | @main-view )
 
-   --tags= @main-view,@favorites,@launch-app (@launch-app-overview | @favorites | @launch-app | @main-view )
-   --platform= (android | ios, default: android)
-   --fullPlatform= android-8.1-api-27 (default: android-10.0-api-29)
-   --device= for Dockerized emulators (default: 'Samsung Galaxy S10')
+--platform= (android | ios, default: android)
 
-   --adbDeviceName= (for real device - serial number, for emulators - 'emulator-5554',
-                     default: 'emulator-5554'). To know adbDeviceName run command: adb devices
+--fullPlatform= android-8.1-api-27 (default: android-10.0-api-29)
 
-   --wdioLogging= (trace | debug | info | warn | error | silent, default: debug)
+--device= for Dockerized emulators (default: 'Samsung Galaxy S10')
 
-   --dryRun= (true | false, default: false) for checking if all cucumber steps defined
+--adbDeviceName= (for real device - serial number, for emulators - 'emulator-5554', default: 'emulator-5554').
+To know adbDeviceName run command: adb devices
 
-### example:
+--wdioLogging= (trace | debug | info | warn | error | silent, default: debug)
+
+--dryRun= (true | false, default: false) for checking if all cucumber steps defined
+```
+
+Examples:
 
 * running on default/non-default manually configured emulator:
+```
 profile:
        {
         platform: 'android'
@@ -67,6 +72,7 @@ profile:
                                               can be skipped, if non-Dockerized emulators)
         adbDeviceName: 'emulator-5554' (depends on the rinning emulators count)
        }
+```
 
 commands:
 ```
@@ -75,6 +81,7 @@ commands:
 ```
 
 * running on real device:
+```
 profile:
        {
         platform: 'android'
@@ -83,6 +90,7 @@ profile:
         adbDeviceName: '8a48ad27' (on phone: Settings -> General info -> Serial number
                                    or command: adb devices)
        }
+```
 
 command:
 ```
@@ -90,6 +98,7 @@ npm run test --tags=@main-view --fullPlatform=android-6.0.1-api-23 --adbDeviceNa
 ```
 
 * running on Dockerized emulators:
+```
 profile:
        {
         platform: 'android' (!only for android platform)
@@ -98,6 +107,7 @@ profile:
                                       configured option, see List of Devices)
         adbDeviceName: 'emulator-5554' (depends on the rinning emulators count)
        }
+```
 
 command:
 ```
@@ -105,26 +115,28 @@ npm run test-docker --tags=@main-view --device='Samsung Galaxy S9'
 ```
 
 ### List of Devices
-Type	Device Name
-Phone	Samsung Galaxy S10
-Phone	Samsung Galaxy S9
-Phone	Samsung Galaxy S8
-Phone	Samsung Galaxy S7 Edge
-Phone	Samsung Galaxy S7
-Phone	Samsung Galaxy S6
-Phone	Nexus 4
-Phone	Nexus 5
-Phone	Nexus One
-Phone	Nexus S
-Tablet	Nexus 7
+
+| Type   | Device Name        |
+| ------ | ------------------ |
+| Phone  | Samsung Galaxy S10 |
+| Phone  | Samsung Galaxy S9  |
+| Phone  | Samsung Galaxy S8  |
+| Phone  | Samsung Galaxy S7  |
+| Phone  | Samsung Galaxy S6  |
+| Phone  | Nexus 4            |
+| Phone  | Nexus 5            |
+| Phone  | Nexus One          |
+| Phone  | Nexus S            |
+| Tablet | Nexus 7            |
 
 
-### Run tests within Dockerized Appium && emulators
+### Running tests within Dockerized Appium and emulator
 
-* Requirements:
-1. Nested Virtualization should be enable, Linix
+Requirements:
+
+1. Nested Virtualization should be enable, Linux OS (Ubuntu)
 2. Docker installed
-3. built local Docker image
+3. built locally Docker images
 
 ```
 .\docker> docker build .
@@ -133,14 +145,14 @@ Tablet	Nexus 7
 
 Android:
 
-| fullPlatform         | docker image        | description                         |
-| -------------------- | ------------------- | ----------------------------------- |
-| android-10.0-api-29  | appium-android-10.0 | the latest (2019) Android OS        |
-| android-8.1-api-27   | appium-android-8.1  | popular (2017) Android OS - 15,4%** |
+| --fullPlatform command option | docker image        | description                         |
+| ----------------------------- | ------------------- | ----------------------------------- |
+| android-10.0-api-29           | appium-android-10.0 | the latest (2019) Android OS        |
+| android-8.1-api-27            | appium-android-8.1  | popular (2017) Android OS - 15,4%** |
 
 *** - in accordance with https://developer.android.com/about/dashboards/index.html?utm_source=suzunone
 
-noVnc available on 6080 port, appium - on 4723 port
+after docker container started - noVNC available on 6080 port, appium - on 4723 port
 
 
 ### Reporting
@@ -153,13 +165,13 @@ npm run generate-report
 
 For report opened in default browser:
 
-Windows:
+on Windows:
 
 ```
 npm run win-launch-report
 ```
 
-Ubuntu:
+on Linux (Ubuntu):
 
 ```
 npm run ubuntu-launch-report
