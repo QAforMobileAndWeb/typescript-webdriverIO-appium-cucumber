@@ -11,4 +11,4 @@ USER root
 #=======================
 # Gopy apk file into container
 #=======================
-COPY ru.yandex.weatherplugin_6.5.12_9341.apk app/ru.yandex.weatherplugin_6.5.12_9341.apk
+COPY yandex_weather_v6.5.12.apk app/yandex_weather_v6.5.12.apk

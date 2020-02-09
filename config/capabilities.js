@@ -46,7 +46,7 @@ function getCapabilities(platformName, platformVersion, adbDeviceName) {
   
     // ---===Application===---
     // path to .apk file      
-    'appium:app': 'app/ru.yandex.weatherplugin_6.5.12_9341.apk',
+    'appium:app': 'app/yandex_weather_v6.5.12.apk',
 
     // package name of the app
     'appium:appPackage': 'ru.yandex.weatherplugin', 
