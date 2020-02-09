@@ -26,12 +26,12 @@ const healthCheck = {
  *      -e DEVICE="Samsung Galaxy S10"
  *      -e EMULATOR_ARGS="-gpu host" (see: https://gist.github.com/JonathanLalou/180c87554d8278b0e6d7)
  *      -e APPIUM=true (see: https://github.com/budtmo/docker-android/blob/master/README_APPIUM_AND_SELENIUM.md)
- *      appium-android-10.0 | appium-android-8.1 (Docker images)
+ *      appium-android-10.0 
  */ 
 function getDockerOptions(platformVersion, deviceName) {
 
     return {
-        // docker images: appium-android-10.0 | appium-android-8.1
+        // docker images: appium-android-10.0
         image: `appium-android-${platformVersion}`,
 
         healthCheck: healthCheck,

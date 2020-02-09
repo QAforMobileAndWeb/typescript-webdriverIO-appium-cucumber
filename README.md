@@ -100,8 +100,8 @@ npm run test --tags=@main-view --fullPlatform=android-6.0.1-api-23 --adbDeviceNa
 ```
 profile:
        {
-        platform: 'android' (!only for android platform)
-        fullPlatform: 'android-10.0-api-29' (default) or 'android-8.1-api-27' (see available Docker images)
+        platform: 'android' (!currently, only for Android 10.0 platform)
+        fullPlatform: 'android-10.0-api-29'
         device: 'Samsung Galaxy S10' (default: 'Samsung Galaxy S10',
                                       configured option, see List of Devices)
         adbDeviceName: 'emulator-5554' (depends on the rinning emulators count)
@@ -126,7 +126,7 @@ Requirements:
 3. built locally Docker images
 
 ```
-.\docker> docker build .
+.\docker\android-10.0> docker build -t appium-android-10.0 .
 
 ```
 
@@ -135,9 +135,6 @@ Android:
 | --fullPlatform command option | docker image        | description                         |
 | ----------------------------- | ------------------- | ----------------------------------- |
 | android-10.0-api-29           | appium-android-10.0 | the latest (2019) Android OS        |
-| android-8.1-api-27            | appium-android-8.1  | popular (2017) Android OS - 15,4%** |
-
-*** - in accordance with https://developer.android.com/about/dashboards/index.html?utm_source=suzunone
 
 after docker container started - noVNC available on 6080 port, appium - on 4723 port
 
