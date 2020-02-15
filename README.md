@@ -80,6 +80,24 @@ commands:
 ```
 
 * running on real device:
+
+Device should be USB connected and configured to run test:
+```
+1. Develover mode is switched on
+
+on MIUI 9 and above:
+
+2. Settings -> Additional Settings -> Developer options ->
+
+   turn ON "USB Debugging"
+   turn ON "Install via USB"
+   set USB Configuration to Charging
+   turn ON "install via USB
+   turn OFF "MIUI optimization" and Restart
+
+   MTP(Media Transfer Protocol) is the default mode.
+```
+
 ```
 profile:
        {

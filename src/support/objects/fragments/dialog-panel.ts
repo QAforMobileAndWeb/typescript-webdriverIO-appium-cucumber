@@ -86,10 +86,14 @@ export class DialogPanel {
     private getLocator(elementName: string, hasVersion) {
 
         const [, version] = configHelper.fullPlatform.split('-');
+        const versionForLocator = version === '10.0' ? '10.0' : '8.1';
+
+        configHelper.logger.info(`platform version :: ${version} :: ${versionForLocator} used for locator`);
+
         const locator = this.panelElements[elementName][configHelper.platform];
 
         return hasVersion
-            ? locator[version]
+            ? locator[versionForLocator]
             : locator;
     }
 }
