@@ -62,6 +62,7 @@ To know adbDeviceName run command: adb devices
 Examples:
 
 * **running on default/non-default manually configured emulator (Android 8.1, 10.0):**
+
 based on [platform version distribution](https://developer.android.com/about/dashboards/index.html?utm_source=suzunone)
 
 ```
