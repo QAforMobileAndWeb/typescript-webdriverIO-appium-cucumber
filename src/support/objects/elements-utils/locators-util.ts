@@ -5,11 +5,15 @@
  */
 class LocatorsUtils {
 
-    public getAppPackage(locatorValue) {
+    public addInstallerPackage(locatorValue) {
+        return `com.android.packageinstaller:${locatorValue}`;
+    }
+
+    public addAppPackage(locatorValue) {
         return `ru.yandex.weatherplugin:${locatorValue}`;
     }
 
-    public getPermissionPackage(locatorValue) {
+    public addPermissionPackage(locatorValue) {
         return `com.android.permissioncontroller:${locatorValue}`;
     }
 

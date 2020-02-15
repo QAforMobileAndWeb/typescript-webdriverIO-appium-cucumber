@@ -14,27 +14,27 @@ export class SettingsView {
             ios: ''
         },
         'sign in button': {
-            android: LU.getResourceId(LU.getAppPackage('id/settings_auth_left_text')),
+            android: LU.getResourceId(LU.addAppPackage('id/settings_auth_left_text')),
             ios: ''
         },
         'sign in description': {
-            android: LU.getResourceId(LU.getAppPackage('id/settings_auth_description')),
+            android: LU.getResourceId(LU.addAppPackage('id/settings_auth_description')),
             ios: ''
         },
         'temperature row': {
-            android: LU.getResourceId(LU.getAppPackage('id/settings_temp_switch_container')),
+            android: LU.getResourceId(LU.addAppPackage('id/settings_temp_switch_container')),
             ios: ''
         },
         'wind speed row': {
-            android: LU.getResourceId(LU.getAppPackage('id/settings_wind_switch_container')),
+            android: LU.getResourceId(LU.addAppPackage('id/settings_wind_switch_container')),
             ios: ''
         },
         'pressure row': {
-            android: LU.getResourceId(LU.getAppPackage('id/settings_pressure_switch_container')),
+            android: LU.getResourceId(LU.addAppPackage('id/settings_pressure_switch_container')),
             ios: ''
         },
         'location row': {
-            android: LU.getResourceId(LU.getAppPackage('id/settings_location_widget_expandable')),
+            android: LU.getResourceId(LU.addAppPackage('id/settings_location_widget_expandable')),
             ios: ''
         }
     };

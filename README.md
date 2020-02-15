@@ -61,7 +61,7 @@ To know adbDeviceName run command: adb devices
 
 Examples:
 
-* running on default/non-default manually configured emulator:
+* running on default/non-default manually configured emulator (Android 8.1, 10.0):
 ```
 profile:
        {

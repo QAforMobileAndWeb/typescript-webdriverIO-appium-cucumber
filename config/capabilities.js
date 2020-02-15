@@ -45,6 +45,7 @@ function getCapabilities(platformName, platformVersion, adbDeviceName) {
     'appium:automationName': 'uiautomator2',
   
     // ---===Application===---
+    // equal manual: adb -s emulator-5554 install yandex_weather_v6.5.12.apk
     // path to .apk file      
     'appium:app': 'app/yandex_weather_v6.5.12.apk',
 

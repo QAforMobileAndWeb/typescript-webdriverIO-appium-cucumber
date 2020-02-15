@@ -7,37 +7,37 @@ export class FavoritesView {
     private viewElements = {
         // top tool bar
         'back button': {
-            android: LU.getResourceId(LU.getAppPackage('id/back_button')),
+            android: LU.getResourceId(LU.addAppPackage('id/back_button')),
             ios: ''
         },
         'search button': {
-            android: LU.getResourceId(LU.getAppPackage('id/search_button')),
+            android: LU.getResourceId(LU.addAppPackage('id/search_button')),
             ios: ''
         },
         // searching
         'search input': {
-            android: LU.getResourceId(LU.getAppPackage('id/search_input_edit_text')),
+            android: LU.getResourceId(LU.addAppPackage('id/search_input_edit_text')),
             ios: ''
         },
         'search results': {
-            android: LU.getResourceId(LU.getAppPackage('id/search_recycler_view')),
+            android: LU.getResourceId(LU.addAppPackage('id/search_recycler_view')),
             ios: ''
         },
         'search hint': {
-            android: LU.getResourceId(LU.getAppPackage('id/search_placeholder')),
+            android: LU.getResourceId(LU.addAppPackage('id/search_placeholder')),
             ios: ''
         },
         'found item': {
-            android: LU.getResourceId(LU.getAppPackage('id/item_search_root')),
+            android: LU.getResourceId(LU.addAppPackage('id/item_search_root')),
             ios: ''
         },
         'reset button': {
-            android: LU.getResourceId(LU.getAppPackage('id/search_clear_image_view')),
+            android: LU.getResourceId(LU.addAppPackage('id/search_clear_image_view')),
             ios: ''
         },
         // favorites segment
         'favorites segment': {
-            android: LU.getResourceId(LU.getAppPackage('id/favorites_content')),
+            android: LU.getResourceId(LU.addAppPackage('id/favorites_content')),
             ios: ''
         },
         'location cards': {
@@ -45,7 +45,7 @@ export class FavoritesView {
             ios: ''
         },
         'add favorites description': {
-            android: LU.getResourceId(LU.getAppPackage('id/favorite_description')),
+            android: LU.getResourceId(LU.addAppPackage('id/favorite_description')),
             ios: ''
         }
     };

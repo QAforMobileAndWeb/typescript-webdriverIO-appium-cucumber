@@ -21,15 +21,8 @@ defineSupportCode(({ Given, When, Then }) => {
 
     When(/I launch application and skip dialog panels/, async () => {
         const dialogPanel = baseView.getContainer('dialog panel');
-        const isLocationAlertVisible = await dialogPanel.isElementVisible('location alert');
-        if (isLocationAlertVisible) {
-            await dialogPanel.clickOnElement('continue button');
-        }
-
-        const isPermissionsAlertVisible = await dialogPanel.isElementVisible('permissions container');
-        if (isPermissionsAlertVisible) {
-            await dialogPanel.clickOnElement('deny button');
-        }
+        await dialogPanel.continueLocationAlert();
+        await dialogPanel.denyPermissions();
     });
 
     When(/I wait the (main|favorites|settings) view is loaded/, async (pageName) => {
