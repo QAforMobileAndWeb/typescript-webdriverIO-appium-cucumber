@@ -1,7 +1,15 @@
 
-## typescript webdriverIO appium cucumber
----
+## Mobile automation for native application
 
+using
+```
+appium
+webdriverio
+cucumber
+chai
+typescript
+allure
+```
 
 ### Requirements
 
