@@ -1,19 +1,8 @@
-const configHelper = require('./../../../config/config-helper.js');
-import { Activities } from '../../support/enums/app-activities';
+const configHelper = require('./../../../../config/config-helper.js');
+import { Activities } from './../../enums/app-activities';
+import { Locations } from './../../enums/locations';
 
 class ElementsUtils {
-
-    public getResourceId(platform, resourceId) {
-        return `${platform}=new UiSelector().resourceId("${resourceId}")`;
-    }
-
-    public getClassName(platform, className) {
-        return `${platform}=new UiSelector().className("${className}")`;
-    }
-
-    public getElementByText(platform: string, text: string) {
-        return $(`${platform}=new UiSelector().text("${text}")`);
-    }
 
     public async waitReady(element, timeOut = 3000) {
         try {
@@ -54,14 +43,7 @@ class ElementsUtils {
     }
 
     public async fillElement(element, valueToFill) {
-       // await this.clearElementValue(element);
-
-        await element.setValue(valueToFill);
-      // const result = await element.getValue();
-
-      //  if (result !== valueToFill) {
-      //      configHelper.logger.error(`setValue :: ${element.selector} :: cannot set value`);
-      //  }
+       await element.setValue(valueToFill);
     }
 
     public async clickOnElement(element) {
@@ -73,7 +55,7 @@ class ElementsUtils {
         }
     }
 
-    /*
+    /* do not work: wanted to launch some app view - launching activity, but no throuth UI
     public async launch(activityName) {
         const appPackage = 'ru.yandex.weatherplugin';
         await browser.startActivity(appPackage, Activities[activityName]);
@@ -82,5 +64,15 @@ class ElementsUtils {
     }
     */
 
+    public async setGeoLocation(locationName: string) {
+
+        // setGeoLocation do not change location - TODO
+        await browser.setGeoLocation(Locations[locationName]);
+        const currentLocation = await browser.getGeoLocation();
+
+        configHelper.logger.info(`current geoLocation "${JSON.stringify(currentLocation)}"`);
+    }
+
 }
+
 export const utils = new ElementsUtils();

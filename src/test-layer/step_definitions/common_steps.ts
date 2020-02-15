@@ -1,8 +1,9 @@
 import { expect } from 'chai';
 import { defineSupportCode } from 'cucumber';
 import { Messages } from '../../support/enums/messages';
+import { utils } from '../../support/objects/elements-utils/elements-util';
+import { LU } from '../../support/objects/elements-utils/locators-util';
 import { BaseView } from '../../support/objects/views/base-view';
-import { utils } from '../../support/objects/elements-util';
 
 const baseView = new BaseView();
 
@@ -13,6 +14,10 @@ defineSupportCode(({ Given, When, Then }) => {
         await utils.launch(activityName);
     });
     */
+
+    When(/I set '(.+)' location on device/, async (locationName) => {
+        await utils.setGeoLocation(locationName);
+    });
 
     When(/I launch application and skip dialog panels/, async () => {
         const dialogPanel = baseView.getContainer('dialog panel');
@@ -54,12 +59,13 @@ defineSupportCode(({ Given, When, Then }) => {
     });
 
     Then(/element(?:s|) (?:are|is) (invisible|visible) on current container:/, async (expectedVisibility, elements) => {
-        const expectedState = expectedVisibility === 'visible';
+        const expectedState = expectedVisibility === 'visible',
+              waitDuring = expectedState ? 10000 : 5000 ;
 
         const expectedElements = elements.hashes().map((el) => el.itemName);
 
         for (const elementName of expectedElements) {
-            const actualState = await baseView.currentContainer.isElementVisible(elementName);
+            const actualState = await baseView.currentContainer.isElementVisible(elementName, waitDuring);
 
             expect(actualState).to.equal(expectedState,
                 `${elementName} visibility - actual: ${actualState}, expected: ${expectedState}`);
@@ -67,7 +73,7 @@ defineSupportCode(({ Given, When, Then }) => {
     });
 
     Then(/element with '(.+)' text should be visible/, async (text) => {
-        const requiredElement = await utils.getElementByText('android', text);
+        const requiredElement = await LU.getElementByText(text);
         const actualState = await utils.isElementVisible(requiredElement);
 
         expect(actualState).to.equal(true);

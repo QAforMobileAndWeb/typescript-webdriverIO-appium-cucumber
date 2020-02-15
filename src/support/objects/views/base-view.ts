@@ -1,3 +1,4 @@
+const configHelper = require('./../../../../config/config-helper.js');
 import { DialogPanel } from '../fragments/dialog-panel';
 import { FavoritesView } from './favorites-view';
 import { MainView } from './main-view';
@@ -15,10 +16,11 @@ export class BaseView {
             'dialog panel': DialogPanel,
             'favorites view': FavoritesView,
             'main view': MainView,
-            'setting view': SettingsView
+            'settings view': SettingsView
         };
 
         this.curContainer = new containers[containerName]();
+        configHelper.logger.info(`setContainer :: current container set to ${containerName}`);
     }
 
     public getContainer(containerName: string) {

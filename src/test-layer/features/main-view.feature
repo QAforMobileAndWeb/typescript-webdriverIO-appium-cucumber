@@ -12,21 +12,19 @@ Feature: Application main view
   Scenario: Main view overview
     Then elements are visible on current container:
       | itemName              |
+      # --== top bar ==--
       | top toolbar segment   |
       | to-favorite button    |
       | weather info location |
       | to-setting button     |
-    And elements are visible on current container:
-      | itemName                    |
+      # --== weather info segment ==--
       | weather info segment        |
       | central weather info square |
       | hourly forecast             |
-    And elements are visible on current container:
-      | itemName       |
+      # --== alert ==--
       | alerts segment |
       | alert image    |
       | alert text     |
       | call to action |
-    And elements are visible on current container:
-      | itemName               |
+      # --== daily forecast segment ==--
       | daily forecast segment |

@@ -1,62 +1,64 @@
 const configHelper = require('./../../../../config/config-helper.js');
-import { utils } from './../elements-util';
+import { utils } from './../elements-utils/elements-util';
+import { LU } from './../elements-utils/locators-util';
 
 export class MainView {
+
     private viewElements = {
         // top tool bar
         'top toolbar segment': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/home_toolbar_toolbar_linear_layout'),
+            android: LU.getResourceId(LU.getAppPackage('id/home_toolbar_toolbar_linear_layout')),
             ios: ''
         },
         'to-favorite button': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/home_toolbar_left_button'),
+            android: LU.getResourceId(LU.getAppPackage('id/home_toolbar_left_button')),
             ios: ''
         },
         'weather info location': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/top_text_title'),
+            android: LU.getResourceId(LU.getAppPackage('id/top_text_title')),
             ios: ''
         },
         'to-setting button': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/home_toolbar_right_button'),
+            android: LU.getResourceId(LU.getAppPackage('id/home_toolbar_right_button')),
             ios: ''
         },
-        'to-set favoirite button': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/search_button'),
+        'to-set favorite button': {
+            android: LU.getResourceId(LU.getAppPackage('id/search_button')),
             ios: ''
         },
         // weather info
         'weather info segment': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/home_illustration_content'),
+            android: LU.getResourceId(LU.getAppPackage('id/home_illustration_content')),
             ios: ''
         },
         'central weather info square': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/home_top_info_view'),
+            android: LU.getResourceId(LU.getAppPackage('id/home_top_info_view')),
             ios: ''
         },
         'hourly forecast': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/home_hourly_forecast'),
+            android: LU.getResourceId(LU.getAppPackage('id/home_hourly_forecast')),
             ios: ''
         },
         // alerts
         'alerts segment': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/home_alert_recycler_view'),
+            android: LU.getResourceId(LU.getAppPackage('id/home_alert_recycler_view')),
             ios: ''
         },
         'alert image': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/alert_item_images_container'),
+            android: LU.getResourceId(LU.getAppPackage('id/alert_item_images_container')),
             ios: ''
         },
         'alert text': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/alert_item_text'),
+            android: LU.getResourceId(LU.getAppPackage('id/alert_item_text')),
             ios: ''
         },
         'call to action': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/alert_item_call_to_action_text'),
+            android: LU.getResourceId(LU.getAppPackage('id/alert_item_call_to_action_text')),
             ios: ''
         },
         // forecast list
         'daily forecast segment': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/home_days_forecast_recycler_view'),
+            android: LU.getResourceId(LU.getAppPackage('id/home_days_forecast_recycler_view')),
             ios: ''
         }
     };

@@ -10,7 +10,6 @@ Feature: Favorites locations
     When I click on 'to-favorite button'
     Then I wait the favorites view is loaded
 
-
   @search-location
   Scenario: Search location
     When I click on 'search button'
@@ -19,7 +18,7 @@ Feature: Favorites locations
       | search input  |
       | search hint   |
     And keyboard should be visible
-    And element 'search input text' text should be 'city_or_area'
+    And element 'search input' text should be 'city_or_area'
     And element 'search hint' text should be 'search_hint'
     When I fill 'search input' with 'Barcelona'
     And keyboard should be visible
@@ -48,7 +47,7 @@ Feature: Favorites locations
       When I click on 'found item'
       When I wait the main view is loaded
       Then element with 'Barcelona' text should be visible
-      When I click on 'to-set favoirite button'
+      When I click on 'to-set favorite button'
       And I click on 'to-favorite button'
       Then I wait the favorites view is loaded
       And elements are invisible on current container:

@@ -7,5 +7,7 @@ export enum Messages {
     city_or_area = 'City or area',
     search_hint = 'Enter location name or exact address',
     add_favorites_description = 'Add a city, area or specific address to your Favorites to quickly see what the weather is like there.\n\n' +
-        'To add Favorites, first search for them, view their forecast and then tap '
+        'To add Favorites, first search for them, view their forecast and then tap ',
+    settings_title = 'Settings',
+    sign_in_description = 'Signing in lets you sync your favorite locations between your devices.'
 }

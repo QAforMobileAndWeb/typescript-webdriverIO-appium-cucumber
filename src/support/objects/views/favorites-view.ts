@@ -1,53 +1,51 @@
 const configHelper = require('./../../../../config/config-helper.js');
-import { utils } from './../elements-util';
+import { utils } from './../elements-utils/elements-util';
+import { LU } from './../elements-utils/locators-util';
 
 export class FavoritesView {
+
     private viewElements = {
         // top tool bar
         'back button': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/back_button'),
+            android: LU.getResourceId(LU.getAppPackage('id/back_button')),
             ios: ''
         },
         'search button': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/search_button'),
+            android: LU.getResourceId(LU.getAppPackage('id/search_button')),
             ios: ''
         },
         // searching
         'search input': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/search_input_edit_text'),
-            ios: ''
-        },
-        'search input text': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/search_input_edit_text'),
+            android: LU.getResourceId(LU.getAppPackage('id/search_input_edit_text')),
             ios: ''
         },
         'search results': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/search_recycler_view'),
+            android: LU.getResourceId(LU.getAppPackage('id/search_recycler_view')),
             ios: ''
         },
         'search hint': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/search_placeholder'),
+            android: LU.getResourceId(LU.getAppPackage('id/search_placeholder')),
             ios: ''
         },
         'found item': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/item_search_root'),
+            android: LU.getResourceId(LU.getAppPackage('id/item_search_root')),
             ios: ''
         },
         'reset button': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/search_clear_image_view'),
+            android: LU.getResourceId(LU.getAppPackage('id/search_clear_image_view')),
             ios: ''
         },
         // favorites segment
         'favorites segment': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/favorites_content'),
+            android: LU.getResourceId(LU.getAppPackage('id/favorites_content')),
             ios: ''
         },
         'location cards': {
-            android: utils.getClassName('android', 'android.widget.RelativeLayout'),
+            android: LU.getClassName('android.widget.RelativeLayout'),
             ios: ''
         },
         'add favorites description': {
-            android: utils.getResourceId('android', 'ru.yandex.weatherplugin:id/favorite_description'),
+            android: LU.getResourceId(LU.getAppPackage('id/favorite_description')),
             ios: ''
         }
     };
@@ -76,10 +74,10 @@ export class FavoritesView {
         return utils.clickOnElement(requiredElement);
     }
 
-    public async isElementVisible(elementName: string) {
+    public async isElementVisible(elementName: string, waitDuring = 30000) {
         const requiredElement = await $(this.viewElements[elementName][configHelper.platform]);
 
-        return utils.isElementVisible(requiredElement, 30000);
+        return utils.isElementVisible(requiredElement, waitDuring);
     }
 
     public async getElementText(elementName: string) {

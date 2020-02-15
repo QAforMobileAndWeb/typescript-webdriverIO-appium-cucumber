@@ -28,3 +28,17 @@ Feature: Launch application
     When I click on 'deny button'
     Then the 'permissions container' should be invisible within dialog panel
     And I wait the main view is loaded
+
+  @set-device-location-check-app @only-api-29 @WIP
+  Scenario: Set device location, check if app reflect it
+
+    #When I set 'City of Mountain View' location on device
+    Then the 'location alert' should be visible within dialog panel
+    When I click on 'continue button'
+    Then the 'permissions container' should be visible within dialog panel
+    When I click on 'allow foreground button'
+    Then the 'permissions container' should be invisible within dialog panel
+    When I wait the main view is loaded
+    Then element with 'City of Mountain View' text should be visible
+
+

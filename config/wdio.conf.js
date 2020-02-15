@@ -89,15 +89,10 @@ exports.config = {
     // Runs after a Cucumber scenario
     afterScenario: async function (uri, feature, scenario, result, sourceLocation) {
 
-      // TODO
-      //  await browser.hideDeviceKeyboard('pressKey', 'Done');
-      //  configHelper.logger.info(`AFTER SCENARIO :: keyboard hidden`);
-
         await browser.closeApp();
         configHelper.logger.info(`AFTER SCENARIO :: app closed`);
 
     },
-
     
     // WebdriverIO provides several hooks you can use to interfere with the test process in order to enhance
     // it and to build services around it. You can either apply a single function or an array of
