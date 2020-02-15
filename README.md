@@ -61,7 +61,9 @@ To know adbDeviceName run command: adb devices
 
 Examples:
 
-* running on default/non-default manually configured emulator (Android 8.1, 10.0):
+* **running on default/non-default manually configured emulator (Android 8.1, 10.0):**
+based on [platform version distribution](https://developer.android.com/about/dashboards/index.html?utm_source=suzunone)
+
 ```
 profile:
        {
@@ -79,7 +81,7 @@ commands:
  npm run test --tags=@main-view --fullPlatform=android-8.1-api-27
 ```
 
-* running on real device:
+* **running on real device:**
 
 Device should be USB connected and configured to run test:
 ```
@@ -114,7 +116,7 @@ command:
 npm run test --tags=@main-view --fullPlatform=android-6.0.1-api-23 --adbDeviceName='8a48ad27'
 ```
 
-* running on Dockerized emulators:
+* **running on Dockerized emulators:**
 ```
 profile:
        {
@@ -150,9 +152,9 @@ Requirements:
 
 Android:
 
-| --fullPlatform command option | docker image        | description                         |
-| ----------------------------- | ------------------- | ----------------------------------- |
-| android-10.0-api-29           | appium-android-10.0 | the latest (2019) Android OS        |
+| --fullPlatform command option | docker image        |
+| ----------------------------- | ------------------- |
+| android-10.0-api-29           | appium-android-10.0 |
 
 after docker container started - noVNC available on 6080 port, appium - on 4723 port
 
