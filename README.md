@@ -51,16 +51,16 @@ npm run test-docker --tags=
 
 ### Options:
 ```
---tags= @main-view,@favorites,@launch-app (@launch-app-overview | @favorites | @launch-app | @main-view )
+--tags= @main-view or @main-view,@favorites,@launch-app (@launch-app | @favorites | @main-view | @settings)
 
---platform= (android | ios, default: android)
+--platform= (android | ios (not supported yet), default: android)
 
 --fullPlatform= android-8.1-api-27 (default: android-10.0-api-29)
 
 --device= for Dockerized emulators (default: 'Samsung Galaxy S10')
 
 --adbDeviceName= (for real device - serial number, for emulators - 'emulator-5554', default: 'emulator-5554').
-To know adbDeviceName run command: adb devices
+                  To know adbDeviceName run command: adb devices
 
 --wdioLogging= (trace | debug | info | warn | error | silent, default: debug)
 
