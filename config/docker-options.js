@@ -16,23 +16,23 @@ const healthCheck = {
 /**
  * more information: https://github.com/budtmo/docker-android
  * docker run command:
- *   sudo docker run
- *      --privileged  (Only for ubuntu OS. This flag allow to use system image x86 for better performance)
- *      -d
- *      -p 6080:6080
- *      -p 5554:5554
- *      -p 5555:5555
- *      -p 4723:4723
- *      -e DEVICE="Samsung Galaxy S10"
- *      -e EMULATOR_ARGS="-gpu host" (see: https://gist.github.com/JonathanLalou/180c87554d8278b0e6d7)
- *      -e APPIUM=true (see: https://github.com/budtmo/docker-android/blob/master/README_APPIUM_AND_SELENIUM.md)
- *      appium-android-10.0 
+ *      sudo docker run 
+ *          --privileged                                            (only for ubuntu OS. This flag allow to use system image x86 for better performance)
+ *          -d 
+ *          -p 6080:6080 
+ *          -p 5554:5554 
+ *          -p 5555:5555 
+ *          -p 4723:4723 
+ *          -e DEVICE="Samsung Galaxy S10" 
+ *          -e EMULATOR_ARGS="-gpu swiftshader_indirect -accel on"  (see: https://gist.github.com/JonathanLalou/180c87554d8278b0e6d7)
+ *          -e APPIUM=true                                          (see: https://github.com/budtmo/docker-android/blob/master/README_APPIUM_AND_SELENIUM.md) 
+ *          antiylia/appium-android-10.0:1.0.0
  */ 
 function getDockerOptions(platformVersion, deviceName) {
 
     return {
-        // docker images: appium-android-10.0
-        image: `appium-android-${platformVersion}`,
+      
+        image: 'antiylia/appium-android-10.0:1.0.0',
 
         healthCheck: healthCheck,
 
@@ -43,7 +43,7 @@ function getDockerOptions(platformVersion, deviceName) {
             d: true,
             e: [
                 `DEVICE=${deviceName}`,
-                'EMULATOR_ARGS=-gpu host',
+                'EMULATOR_ARGS=-gpu swiftshader_indirect -accel on',                
                 'APPIUM=true'
              ],
             p: [
@@ -54,6 +54,6 @@ function getDockerOptions(platformVersion, deviceName) {
             ]            
         }
     };
-}
+};
 
 module.exports.getDockerOptions = getDockerOptions;

@@ -144,20 +144,17 @@ npm run test-docker --tags=@main-view --device='Samsung Galaxy S9'
 
 ### List of Devices
 
-see https://github.com/budtmo/docker-android#list-of-devices
+see [list of devices](https://github.com/budtmo/docker-android#list-of-devices)
 
-### Running tests within Dockerized Appium and emulator
+### Running tests within Dockerized Appium and Android emulators
+
+These [solution](https://github.com/budtmo/docker-android) was used as basement for slightly customized [Docker image](https://hub.docker.com/repository/docker/antiylia/appium-android-10.0)
 
 Requirements:
 
 1. Nested Virtualization should be enable, Linux OS (Ubuntu)
 2. Docker installed
-3. built locally Docker images
-
-```
-.\docker\android-10.0> docker build -t appium-android-10.0 .
-
-```
+3. downloaded Docker image
 
 Android:
 
@@ -165,8 +162,10 @@ Android:
 | ----------------------------- | ------------------- |
 | android-10.0-api-29           | appium-android-10.0 |
 
-after docker container started - noVNC available on 6080 port, appium - on 4723 port
+after docker container started - noVNC available on 6080 port, appium - on 4723 port.
 
+**! Having perfomance issue with Dockerized emulators - they are freezing and can be crashed during test execution.
+Using Firefox browser for VNC reviewing (localhost:6080) works faster, than Chrome, but not fully solved the perfomance issue.**
 
 ### Reporting
 
